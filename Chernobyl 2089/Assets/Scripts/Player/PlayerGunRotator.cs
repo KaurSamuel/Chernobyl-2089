@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerGunRotator : MonoBehaviour
 {
     public Rigidbody2D bulletPrefab;
+    public GameObject GunSprite;
+
     [HideInInspector]
     public float bulletSpeed = 10;
     public float curmagsize;
@@ -13,6 +15,7 @@ public class PlayerGunRotator : MonoBehaviour
     private bool reloading = false;
     [HideInInspector]
     public float timer = 0f;
+
     public Gun[] inventory;
     public Gun currentlyequipped;
     private float cooldowntimer;
@@ -31,6 +34,15 @@ public class PlayerGunRotator : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(transform.rotation.z);
+        if (transform.rotation.z > 0.7f || transform.rotation.z < -0.7f)
+        {
+            GunSprite.GetComponent<SpriteRenderer>().flipY = true;
+        }
+        else
+        {
+            GunSprite.GetComponent<SpriteRenderer>().flipY = false;
+        }
         AmmoUI.text = (curmagsize.ToString() + " / " + currentlyequipped.magsize.ToString());
         Aim();
         cooldowntimer += Time.deltaTime;
