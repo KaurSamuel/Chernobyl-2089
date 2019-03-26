@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerGunRotator : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class PlayerGunRotator : MonoBehaviour
     private float cooldowntimer;
     private int currentlyequippedint;
 
+    public Text AmmoUI;
+    public Text GunUI;
+    public Image ReloadUI;
+
     private void Start()
     {
         currentlyequipped = inventory[0];
@@ -26,6 +31,7 @@ public class PlayerGunRotator : MonoBehaviour
 
     void Update()
     {
+        AmmoUI.text = (curmagsize.ToString() + " / " + currentlyequipped.magsize.ToString());
         Aim();
         cooldowntimer += Time.deltaTime;
         if (cooldowntimer >= currentlyequipped.attackSpeed)
@@ -56,6 +62,9 @@ public class PlayerGunRotator : MonoBehaviour
                 currentlyequippedint += 1;
             }
             currentlyequipped = inventory[currentlyequippedint];
+            curmagsize = 0;
+            GunUI.text = currentlyequipped.name;
+            timer = currentlyequipped.reloadtimer;
             Debug.Log("Weapon Change up");
         }
         else if (Input.mouseScrollDelta == new Vector2(0, -1))
@@ -69,6 +78,9 @@ public class PlayerGunRotator : MonoBehaviour
                 currentlyequippedint -= 1;
             }
             currentlyequipped = inventory[currentlyequippedint];
+            curmagsize = 0;
+            GunUI.text = currentlyequipped.name;
+            timer = currentlyequipped.reloadtimer;
             Debug.Log("Weapon Change down");
         }
     }
@@ -89,11 +101,20 @@ public class PlayerGunRotator : MonoBehaviour
         reloading = true;
         timer -= Time.deltaTime;
         Debug.Log("Reloading. Timer : "+ currentlyequipped.reloadtimer.ToString());
+        float reloadprecentage = (timer / currentlyequipped.reloadtimer);
+        if (reloadprecentage<0)
+        {
+            reloadprecentage = 0;
+        }
+
+        ReloadUI.rectTransform.localScale = new Vector2(reloadprecentage, 1);
+
         if (timer<0)
         {
             reloading = false;
             curmagsize = currentlyequipped.magsize;
             timer = currentlyequipped.reloadtimer;
+            ReloadUI.rectTransform.localScale = new Vector2(1, 1);
         }
     }
 
