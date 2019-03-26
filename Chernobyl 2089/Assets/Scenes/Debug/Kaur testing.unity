@@ -191,7 +191,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 43.4, y: 15}
+  m_AnchoredPosition: {x: 51.300003, y: 14.950012}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107244900
@@ -2109,6 +2109,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1182316212}
+--- !u!1 &938187626 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2452111705501734471, guid: b6abf3486e7827b488d5e15c6b4f8f5e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2452111705087109292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1014926616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5775,6 +5781,11 @@ PrefabInstance:
       propertyPath: ReloadUItest
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2452111705474553572, guid: b6abf3486e7827b488d5e15c6b4f8f5e,
+        type: 3}
+      propertyPath: GunSprite
+      value: 
+      objectReference: {fileID: 938187626}
     - target: {fileID: 2452111706192862747, guid: b6abf3486e7827b488d5e15c6b4f8f5e,
         type: 3}
       propertyPath: m_Constraints
@@ -5901,6 +5912,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452111705501734465, guid: b6abf3486e7827b488d5e15c6b4f8f5e,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2452111705501734465, guid: b6abf3486e7827b488d5e15c6b4f8f5e,
+        type: 3}
+      propertyPath: m_FlipY
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2452111705501734466, guid: b6abf3486e7827b488d5e15c6b4f8f5e, type: 3}
