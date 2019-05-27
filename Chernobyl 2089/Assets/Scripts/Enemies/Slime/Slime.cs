@@ -20,9 +20,9 @@ public class Slime : Enemy
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player Bullet")
+        if (collision.gameObject.tag == "Player Bullet")
         {
-            TakeDamage(collision.GetComponent<Bullet>().GivenDamage);
-        }     
+            TakeDamage(collision.gameObject.GetComponent<Bullet>().GivenDamage);
+        }
     }
 }

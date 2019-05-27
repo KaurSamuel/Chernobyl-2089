@@ -9,18 +9,24 @@ public class Enemy : MonoBehaviour
     public float Damage;
     public float HitPoints;
     public bool Meele;   
-
-    public void TakeDamage(float Damage)
+    /// <summary>
+    /// Enemy takes given damage
+    /// </summary>
+    /// <param name="DamageDone">Given damage</param>
+    public void TakeDamage(float DamageDone)
     {
-        HitPoints -= Damage;
-        Debug.Log("Ememy took " + Damage.ToString()+ " damage and has "+ HitPoints.ToString()+" HP remaining");
+        HitPoints -= DamageDone;
+        Debug.Log("Ememy took " + DamageDone.ToString()+ " damage and has "+ HitPoints.ToString()+" HP remaining");
         if (HitPoints <= 0)
         {
-            Destroy(gameObject); //Todo: Add some animation and disable collisions make it not seem like it disapears
+            Destroy(gameObject); //Todo: Add some animation and disable collisions, make it not seem like it disapears
         }
     }
 
+    public void Attack(GameObject Player)
+    {
 
+    }
 
 
 }

@@ -8,6 +8,7 @@ TagManager:
   - Solw to walk
   - Player Bullet
   - Enemy Bullet
+  - Dungeon walls
   layers:
   - Default
   - TransparentFX
@@ -59,6 +60,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 857478705
+    locked: 0
+  - name: Walls
+    uniqueID: 1272549117
     locked: 0
   - name: Walls
     uniqueID: 1272549117
