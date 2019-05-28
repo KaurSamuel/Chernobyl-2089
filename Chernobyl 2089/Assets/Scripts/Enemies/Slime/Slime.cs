@@ -4,25 +4,12 @@ using UnityEngine;
 
 public class Slime : Enemy
 {
-    Slime()
+    private void Start()
     {
-        MovmentsSpeed = 1f;
-        AttackSpeed = 1f;
-        Damage = 1f;
-        Meele = true;
-        HitPoints = 10f;
     }
-
     private void FixedUpdate()
     {
-        
+        transform.position += new Vector3(0, -1f) * 1f * Time.deltaTime;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player Bullet")
-        {
-            TakeDamage(collision.gameObject.GetComponent<Bullet>().GivenDamage);
-        }
-    }
 }

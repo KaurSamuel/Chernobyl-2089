@@ -9,6 +9,7 @@ TagManager:
   - Player Bullet
   - Enemy Bullet
   - Dungeon walls
+  - Fragile
   layers:
   - Default
   - TransparentFX

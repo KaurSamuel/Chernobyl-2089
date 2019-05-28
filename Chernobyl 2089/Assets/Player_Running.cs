@@ -7,6 +7,7 @@ public class Player_Running : MonoBehaviour
     private Vector3 normalizeDirection;
     public float speed = 5f;
     public List<GameObject> MovmentLines;
+    public GameObject bulletpref;
 
     private int CurLine;
 
@@ -37,5 +38,16 @@ public class Player_Running : MonoBehaviour
                 gameObject.transform.position = new Vector3(MovmentLines[CurLine].transform.position.x, transform.position.y,-10);
             }
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Quaternion rotation = Quaternion.identity;
+            Vector3 pos = new Vector3(transform.position.x, transform.position.y);
+            Instantiate(bulletpref, pos, rotation);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(gameObject);   
     }
 }

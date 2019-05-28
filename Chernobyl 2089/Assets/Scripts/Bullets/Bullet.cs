@@ -4,28 +4,25 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float Lifetime = 10f;
-    public float GivenDamage;
+    private float Lifetime = 1f;
     private void FixedUpdate()
     {
+        transform.position += new Vector3(0, 1) * 10f * Time.deltaTime;
         Lifetime -= Time.deltaTime;
         if (Lifetime<0)
         {
             Destroy(gameObject);
         }
+
     }
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (collision.gameObject.tag == "Enemy")
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        Debug.Log("Collided");
+        if (collision.gameObject.tag == "Fragile")
         {
+            Destroy(collision.gameObject);
             Destroy(gameObject);
+
         }
     }
    
