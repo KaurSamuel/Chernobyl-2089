@@ -53,6 +53,9 @@ TagManager:
   - name: Dungeon
     uniqueID: 3308858343
     locked: 0
+  - name: Ammo
+    uniqueID: 1833176673
+    locked: 0
   - name: Clutter
     uniqueID: 224172013
     locked: 0
@@ -62,7 +65,7 @@ TagManager:
   - name: Player
     uniqueID: 857478705
     locked: 0
-  - name: Walls
+  - name: smere
     uniqueID: 1272549117
     locked: 0
   - name: Walls

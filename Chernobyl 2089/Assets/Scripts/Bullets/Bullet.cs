@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     private float Lifetime = 1f;
     private void FixedUpdate()
     {
-        transform.position += new Vector3(0, 1) * 10f * Time.deltaTime;
+        transform.position += new Vector3(0, 1) * 15f * Time.deltaTime;
         Lifetime -= Time.deltaTime;
         if (Lifetime<0)
         {
@@ -22,7 +22,10 @@ public class Bullet : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Destroy(gameObject);
-
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
    
