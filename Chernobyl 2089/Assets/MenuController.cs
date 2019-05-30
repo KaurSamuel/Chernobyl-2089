@@ -15,12 +15,6 @@ public class MenuController : MonoBehaviour
     {
         CurPoint = 0;
         gameObject.transform.position = new Vector3(Selectpoints[CurPoint].transform.position.x, Selectpoints[CurPoint].transform.position.y);
-        if (PlayerPrefs.HasKey("Highscore")== true)
-        {
-            PlayerPrefs.SetInt("Highscore", 0);
-        }
-        score.text = "High Score: /n" + PlayerPrefs.GetInt("Highscore").ToString();
-        print("s");
     }
 
     // Update is called once per frame
@@ -44,7 +38,7 @@ public class MenuController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)|| Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.Return))
         {
             if (CurPoint==1)
             {

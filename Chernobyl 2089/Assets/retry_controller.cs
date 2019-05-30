@@ -36,7 +36,7 @@ public class retry_controller : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
+        if (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
         {
             if (CurPoint == 1)
             {

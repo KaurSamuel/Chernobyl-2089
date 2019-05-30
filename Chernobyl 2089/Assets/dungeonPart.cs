@@ -9,7 +9,7 @@ public class dungeonPart : MonoBehaviour
     private float CurTimer = 7;
     void Start()
     {
-        
+        speed = 6.5f;
     }
 
     // Update is called once per frame

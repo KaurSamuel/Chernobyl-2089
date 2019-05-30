@@ -48,6 +48,7 @@ public class Player_Running : MonoBehaviour
         score = 1;
         notdead = true;
         collider = GetComponent<BoxCollider2D>();
+        audio.loop = true;
     }
 
     void Update()
