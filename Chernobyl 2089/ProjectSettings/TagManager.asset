@@ -68,6 +68,9 @@ TagManager:
   - name: smere
     uniqueID: 1272549117
     locked: 0
-  - name: Walls
-    uniqueID: 1272549117
+  - name: Smere covers
+    uniqueID: 2197970841
+    locked: 0
+  - name: text
+    uniqueID: 2255637343
     locked: 0

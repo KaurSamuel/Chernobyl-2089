@@ -17,6 +17,17 @@ public class Player_Running : MonoBehaviour
     public Text ScoreText;
     public Animator Right;
     public Animator Left;
+    public Animator Player;
+    public Animator Fade;
+    public AudioSource audio;
+    public AudioClip deadclip;
+    public AudioSource effects;
+    public AudioClip oofclip;
+    public AudioClip shootclip;
+    public List<GameObject> retrythings;
+    public List<GameObject> retrythings2;
+    public GameObject UI;
+    public Text Scoretext;
 
 
     private int CurLine;
@@ -24,6 +35,8 @@ public class Player_Running : MonoBehaviour
     private int maxmahsize = 3;
     private int curmagsize;
     private int score;
+    private bool notdead;
+    private Collider2D collider;
     void Start()
     {
         //normalizeDirection = (target.position - transform.position).normalized;
@@ -33,6 +46,8 @@ public class Player_Running : MonoBehaviour
         Clipimage.sprite = clipsprites[curmagsize];
         Uiloaded.SetBool("empty", false);
         score = 1;
+        notdead = true;
+        collider = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -42,7 +57,7 @@ public class Player_Running : MonoBehaviour
         {
             CurReload_timer -= Time.deltaTime;
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow)&& CurLine != 2)
+        if (Input.GetKeyDown(KeyCode.RightArrow)&& CurLine != 3)
         {
             
             CurLine += 1;
@@ -56,7 +71,7 @@ public class Player_Running : MonoBehaviour
             gameObject.transform.position = new Vector3(MovmentLines[CurLine].transform.position.x, transform.position.y,-10);
             Left.SetTrigger("smere");
         }
-        if (Input.GetKeyDown(KeyCode.Space)&& CurReload_timer<=0&& curmagsize>=0)
+        if (Input.GetKeyDown(KeyCode.Space)&& CurReload_timer<=0&& curmagsize>=0&& notdead)
         {
             Quaternion rotation = Quaternion.identity;
             Vector3 pos = new Vector3(transform.position.x, transform.position.y);
@@ -72,6 +87,8 @@ public class Player_Running : MonoBehaviour
                 Clipimage.sprite = clipsprites[curmagsize];
             }
             CurReload_timer = reload_timer;
+            effects.clip = shootclip;
+            effects.Play();
         }
         if (curmagsize>-1)
         {
@@ -91,14 +108,34 @@ public class Player_Running : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        score += 1;
-        ScoreText.text = score.ToString();
+        if (notdead)
+        {
+            score += 1;
+            ScoreText.text = score.ToString();
+        }
     }
 
+    [System.Obsolete]
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        PlayerPrefs.SetInt("Highscore", score);
-        Destroy(gameObject);   
+        notdead = false;
+        collider.enabled = false;
+        Player.SetTrigger("dead");
+        Fade.SetBool("dead",true);
+        effects.clip = oofclip;
+        effects.Play();
+        audio.Stop();
+        audio.clip = deadclip;
+        audio.Play();
+        foreach (GameObject item in retrythings)
+        {
+            item.active = true;
+        }
+        foreach (GameObject item in retrythings2)
+        {
+            item.active = false;
+        }
+        Scoretext.text = "Score: " + score.ToString();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

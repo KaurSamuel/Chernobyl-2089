@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Relase/Title Menu.unity
     guid: 5997160d34971b94db193d3e633a8518
-  - enabled: 0
-    path: Assets/Scenes/Debug/Kaur testing.unity
-    guid: bb3fdadba6bae2f448058f82c6d04c25
+  - enabled: 1
+    path: Assets/Scenes/Relase/Running Game.unity
+    guid: 3324b774daf36504fae4be379571493e
   m_configObjects: {}
